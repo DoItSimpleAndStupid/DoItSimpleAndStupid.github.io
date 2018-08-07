@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="ZH-"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="keep it simple and stupid!"><title> | Hades</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Hades</h1><a id="logo" href="/.">Hades</a><p class="description">俊、小屋</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 홈</i></a><a href="/archives/"><i class="fa fa-archive"> 아카이브</i></a><a href="/about/"><i class="fa fa-user"> 소개</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-meta">Aug 6, 2018</div><a class="disqus-comment-count" data-disqus-identifier="2018/08/06/MyBlog开发第一天/" href="/2018/08/06/MyBlog开发第一天/#disqus_thread"></a><div class="post-content"><p></p><h1 style="text-align:center">javaweb开发MyBlog–第一天</h1><p></p>
+<h2 id="建立前端页面"><a href="#建立前端页面" class="headerlink" title="建立前端页面"></a>建立前端页面</h2><p></p><h6>首先准备登陆页面(login.html)和首页(index.html)<br><br>页面效果如下：<p></p>
+<h3 id="登陆页面"><a href="#登陆页面" class="headerlink" title="登陆页面"></a>登陆页面</h3><p><img src="https://i.imgur.com/0Sy8RMO.png" alt=""></p>
+<h3 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h3><p><img src="https://i.imgur.com/cdRhA72.png" alt=""></p>
+<h2 id="login-html代码如下："><a href="#login-html代码如下：" class="headerlink" title="login.html代码如下："></a>login.html代码如下：</h2><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;登录 | MyBlog&lt;/title&gt;
+&lt;link href=&quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/public.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/login.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;container&quot;&gt;
+&lt;form action=&quot;LoginServlet&quot; method=&quot;post&quot;&gt;
+&lt;h1&gt;&lt;a href=&quot;index.jsp&quot;&gt;MyBlog&lt;/a&gt; &lt;/h1&gt;
+&lt;label for=&quot;input&quot; class=&quot;sr-only&quot;&gt;用户名&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;input&quot; class=&quot;form-control&quot; placeholder=&quot;用户名&quot; name=&quot;userid&quot; required/&gt;
+&lt;label for=&quot;inputpassword&quot; class=&quot;sr-only&quot;&gt;密码&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;inputpassword&quot; class=&quot;form-control&quot; placeholder=&quot;密码&quot; name=&quot;password&quot; required/&gt;
+&lt;button type=&quot;submit&quot; class=&quot;btn btn-lg btn-primary btn-block&quot; id=&quot;submit&quot;&gt;登录&lt;/button&gt;
+&lt;!--&lt;a href=&quot;index.jsp&quot; class=&quot;visitor&quot;&gt;访客登录&lt;/a&gt;--&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+&lt;div id=&quot;footer&quot;&gt;
+&lt;a target=&quot;_blank&quot; href=&quot;https://DoItSimpleAndStupid.github.io&quot;&gt;&lt;img src=&quot;images/github.png&quot; width=&quot;22px&quot; height=&quot;22px&quot; class=&quot;img-circle&quot;&gt;GitHub&lt;/a&gt;
+by Hades.
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="index-html代码如下"><a href="#index-html代码如下" class="headerlink" title="index.html代码如下"></a>index.html代码如下</h2><pre><code>&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&gt;
+ &lt;%@taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot;  prefix=&quot;c&quot; %&gt;
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;首页 | MyBlog&lt;/title&gt;
+&lt;!-- Bootstrap core CSS --&gt;
+&lt;link    href=&quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;!-- Custom styles for this template --&gt;
+&lt;link href=&quot;signin.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;./css/main.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;head_line&quot;&gt;&lt;/div&gt;
+
+    &lt;div class=&quot;container&quot; id=&quot;main&quot;&gt;
+
+        &lt;div id=&quot;header&quot;&gt;&lt;/div&gt;
+
+        &lt;div class=&quot;row c_center&quot;&gt;
+            &lt;div class=&quot;col-md-3&quot; id=&quot;left_content&quot;&gt;
+
+                &lt;div id=&quot;title&quot;&gt;
+                    &lt;h2&gt;&lt;a href=&quot;login.jsp&quot;&gt;MyBlog&lt;/a&gt;&lt;/h2&gt;
+                    &lt;h5 class=&quot;text-muted&quot;&gt;Winner Winner Chicken Dinner!&lt;/h5&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;c_center&quot; id=&quot;person_info&quot;&gt;
+                    &lt;img src=&quot;images/header.jpg&quot; height=&quot;130&quot; width=&quot;130&quot;
+                        alt=&quot;丢失了我的头像?&quot; class=&quot;img-circle&quot;&gt;
+                    &lt;h4 class=&quot;text-muted&quot;&gt;Hades&lt;/h4&gt;
+                    &lt;h5 class=&quot;text-muted&quot;&gt;星星和浮云.&lt;/h5&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;c_center&quot;&gt;
+                    &lt;!-- 这里初始化侧边栏的4个标签 --&gt;
+                    &lt;div class=&quot;inline &quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;&lt;br/&gt;日志&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;inline &quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;br/&gt;分类&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;inline &quot; &gt;
+                        &lt;a href=&quot;#&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;br/&gt;标签&lt;/a&gt;
+                    &lt;/div&gt;
+
+                &lt;/div&gt;
+
+
+                &lt;div id=&quot;list&quot;&gt;
+                    &lt;table class=&quot;table table-hover c_center&quot;&gt;
+                        &lt;tr class=&quot;active&quot;&gt;
+                            &lt;td&gt;&lt;a href=&quot;/Blog/index.jsp    &quot;&gt;&lt;span class=&quot;glyphicon glyphicon-home&quot;&gt;&lt;/span&gt;
+                                &amp;nbsp;&amp;nbsp;首页&lt;/a&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;    
+                            &lt;td&gt;&lt;a href=&quot;/Blog/SortServlet?get=all&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-list&quot;&gt;&lt;/span&gt;
+                                &amp;nbsp;&amp;nbsp;分类&lt;/a&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;&lt;a href=&quot;/Blog/TagsServlet?get=all&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-tags&quot;&gt;&lt;/span&gt;
+                                &amp;nbsp;&amp;nbsp;标签&lt;/a&gt;&lt;/td&gt;
+                        &lt;/tr&gt;                        
+                        &lt;tr&gt;
+                            &lt;td&gt;&lt;a href=&quot;/Blog/AxisServlet&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-book&quot;&gt;&lt;/span&gt;
+                                &amp;nbsp;&amp;nbsp;时间轴&lt;/a&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;&lt;a href=&quot;/Blog/page/about.html&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-user&quot;&gt;&lt;/span&gt;
+                                &amp;nbsp;&amp;nbsp;关于&lt;/a&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/table&gt;
+                &lt;/div&gt;
+                &lt;!-- list --&gt;
+                    &lt;br/&gt;
+
+                &lt;div class=&quot;sort&quot;&gt;
+                    &lt;div class=&quot;list-group&quot;&gt;
+                        &lt;span class=&quot;list-group-item active&quot;&gt;分类&lt;/span&gt;                                            
+                    &lt;/div&gt;
+                &lt;/div&gt;&lt;!-- sort --&gt;
+
+
+                &lt;div class=&quot;visit&quot;&gt;
+                    &lt;div class=&quot;list-group&quot;&gt;
+                        &lt;span class=&quot;list-group-item active&quot;&gt;阅读排行&lt;/span&gt;                                            
+                    &lt;/div&gt;
+                &lt;/div&gt;&lt;!-- visit--&gt;
+
+
+                &lt;div id=&quot;tag&quot;&gt;
+                    &lt;div class=&quot;list-group&quot;&gt;
+                        &lt;span class=&quot;list-group-item active&quot;&gt;标签&lt;/span&gt;                    
+                        &lt;br/&gt;                        
+                    &lt;/div&gt;
+                &lt;/div&gt;&lt;!-- tag --&gt;
+
+
+            &lt;!-- admin here --&gt;
+            &lt;a href=&quot;#&quot;&gt;
+            &lt;span class=&quot;glyphicon glyphicon-plus&quot;&gt;&amp;nbsp;&amp;nbsp;写新文章&amp;nbsp;&amp;nbsp;&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;a href=&quot;#&quot;&gt;
+            &lt;span class=&quot;glyphicon glyphicon glyphicon-user&quot;&gt;&amp;nbsp;&amp;nbsp;管理更多&amp;nbsp;&amp;nbsp;&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;!--  --&gt;
+
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-2&quot; id=&quot;center_content&quot;&gt;        
+            &lt;/div&gt;
+
+
+            &lt;div  class=&quot;col-md-7 &quot; id=&quot;right_Content&quot;&gt;
+                &lt;br /&gt;
+                &lt;br /&gt;
+                &lt;div class=&quot;list-group&quot;&gt;                            
+                    &lt;a href=&quot;#&quot; class=&quot;list-group-item active&quot;&gt;文章&lt;/a&gt;
+
+                &lt;/div&gt;
+            &lt;/div&gt;    
+        &lt;/div&gt;                
+        &lt;div class=&quot;foot_line&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;&lt;!-- container --&gt;
+    &lt;div id=&quot;footer&quot;&gt;
+        &lt;div&gt;
+            &lt;a href=&quot;https://DoItSimpleAndStupid/github.io&quot;&gt;&lt;img src=&quot;images/github.png&quot;width=&quot;20px&quot; height=&quot;20px&quot; class=&quot;img-circle&quot;&gt;&amp;nbsp;&amp;nbsp;GitHub&lt;/a&gt;
+            &amp;nbsp;|
+            &lt;a href=&quot;#&quot;&gt;&amp;nbsp;&amp;nbsp;MyBlog&lt;/a&gt;
+            &lt;br/&gt;
+            copyright © 2018
+        &lt;/div&gt;        
+
+        &lt;div class=&quot;r_div&quot;&gt;
+        &lt;a href=&quot;#&quot;&gt;&lt;input  class=&quot;btn btn-default&quot;   value=&quot;返回顶部&quot;  style=&quot;width:50%;&quot;/&gt;&lt;/a&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;&lt;!-- footer --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></h6></div><div class="tags"></div><div class="post-nav"><a class="next" href="/2018/08/03/hello-world/">Hello World</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://DoItSimpleAndStupid.github.io/2018/08/06/MyBlog开发第一天/';
+    this.page.identifier = '2018/08/06/MyBlog开发第一天/';
+    this.page.title = '';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//Alonewolves1997.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//Alonewolves1997.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://Alonewolves1997.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://DoItSimpleAndStupid.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 카테고리</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 태그</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 과거</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/06/MyBlog开发第一天/">MyBlog开发第一天</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/03/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 최근 댓글</i></div><script type="text/javascript" src="//Alonewolves1997.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 블로그롤</i></div><ul></ul><a href="https://github.com/DoItSimpleAndStupid/DoItSimpleAndStupid.github.io" title="DoItSimpleAndStupid" target="_blank">DoItSimpleAndStupid</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Hades.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
